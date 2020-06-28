@@ -1,3 +1,22 @@
+/*
+ * @lc app=leetcode.cn id=21 lang=javascript
+ *
+ * [21] 合并两个有序链表
+ */
+
+// @lc code=start
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
 function ListNode(val, next) {
     this.val = (val===undefined ? 0 : val)
     this.next = (next===undefined ? null : next)
@@ -22,7 +41,7 @@ var mergeTwoLists = function(l1, l2) {
         result = l1;
     }
     //比较拼接链表
-    for (pre = l1p ,l1p = l1p.next;l1p != null && l2p != null && (l1p.next != null || l2p.next != null) ;pre = pre.next ) {
+    for (pre = l1p ,l1p = l1p.next;l1p != null && l2p != null ;pre = pre.next ) {
         console.log("l1p.val : "+l1p.val);
         console.log("l2p.val : "+l2p.val);
         if(l1p.val>l2p.val){
@@ -42,13 +61,5 @@ var mergeTwoLists = function(l1, l2) {
     }
     return result;
 };
-var scanList = function(l){
-    for(;l != null;l = l.next){
-        console.log(l.val);
-    }
-}
-let l1 = new ListNode(-2,new ListNode(5,null));
-let l2 = new ListNode(-9,new ListNode(-6,new ListNode(-3,new ListNode(-1,new ListNode(1,new ListNode(6,null))))));
-scanList(l1);
-scanList(l2);
-mergeTwoLists(l1,l2);
+// @lc code=end
+
