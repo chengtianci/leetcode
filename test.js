@@ -1,16 +1,30 @@
-let nums = [3,2,2,3];
-let val  = 3;
-
-let len = nums.length;
-for (let index = 0; index < len; ) {
-    const element = nums[index];
-    if(element == val ){
-        nums[index] = nums[len-1];
-        len -= 1;
-    }else{
-        index++;
+let haystack = "mississippi";
+let needle  = "issip";
+if(needle==''){return 0 ;}
+let index = 0, endFlag = false;
+for (let ni = 0;endFlag == false && index < haystack.length; ) {
+    
+    if(haystack[index] == needle[ni]) {
+        for (let nc = index; ni < needle.length;) {
+            if(needle[ni] == haystack[nc]) {
+                nc++;
+                ni++;
+            }else{
+                break;
+            }
+        }
+        if(ni == needle.length) {
+            //成功匹配
+            endFlag = true;
+        }else{
+            //匹配失败
+            index++;
+            ni = 0;
+        }
+    }else {
+        index ++;
+        ni = 0;
     }
 }
-nums = nums.splice(0,len);
-console.log(nums);
-console.log(len);
+if(endFlag) {console.log(index) }
+else{console.log(-1);}
