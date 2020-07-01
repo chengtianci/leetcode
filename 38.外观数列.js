@@ -1,17 +1,28 @@
+/*
+ * @lc app=leetcode.cn id=38 lang=javascript
+ *
+ * [38] 外观数列
+ */
+
+// @lc code=start
+/**
+ * @param {number} n
+ * @return {string}
+ */
 var countAndSay = function(n) {
     if (n<1||n>30) {
         return -1;
     }
     if (n==1) {
-        return 1;
+        return "1";
     }else if (n==2) {
-        return 11;
+        return "11";
     }
     let results = {1:"1",2:"11"};
     for (let index = 3; index <= n; index++) {
         results[index] = scan(results[index-1]);
     }
-  return results[n];
+    return results[n];
 };
 var scan = function(str){
     if(str == ''){return 'empty input'};
@@ -31,5 +42,5 @@ var scan = function(str){
     }
     return result;
 }
+// @lc code=end
 
-console.log(countAndSay(5));
