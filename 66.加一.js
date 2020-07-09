@@ -10,7 +10,11 @@
  * @return {number[]}
  */
 var plusOne = function(digits) {
-    
+    let integer = Number(digits.join(""));
+    if (Number(digits.join("")) < Number.MAX_SAFE_INTEGER) {
+        return String(integer + 1).split("").map((s) => Number(s));
+    }
+
     const len = digits.length;
     for(let i = len -1;i>=0;i--){
         digits[i]++;
