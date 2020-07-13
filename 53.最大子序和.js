@@ -9,6 +9,10 @@
  * @param {number[]} nums
  * @return {number}
  */
+/**
+ * 思路：从头开始加，加上X是否更大 ，更大则记录
+ */
+
 var maxSubArray = function(nums) {
     let pre = 0, maxAns = nums[0];
     nums.forEach((x) => {
