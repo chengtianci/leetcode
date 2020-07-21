@@ -1,40 +1,42 @@
-function ListNode (val) {
-    this.val = val;
-    this.next = null;
-}
-var deleteDuplicates = function (head) {
-    if (head == null) return null;
-    let point = new ListNode();
-    let pre = new ListNode();
-
-    for (point = head.next, pre = head; point != null;) {
-        if (pre.val == point.val) {
-            //del
-            pre.next = point.next;
-            point = point.next;
-        } else {
-            //move point&pre
-            pre = pre.next;
-            point = point.next
-        }
-
+let nums1 = [2, 0];
+let nums2 = [1];
+var merge = function (nums1, m, nums2, n) {
+    for (let i = 0; i < n; i++) {
+        nums1[m + i] = Infinity;
     }
-    return head;
+    let j = 0;
+    let i = 0;
+    let val = Infinity
+    for (; i < n + m, j < n; i++) {
+        let mini = Math.min(Math.min(val, nums1[i]), nums2[j]);
+        if (mini == nums1[i]) {
+            continue;
+        } else if (mini == val) {
+            let temp = nums1[i];
+            nums1[i] = val;
+            val = temp;
+        } else {
+            val = nums1[i];
+            nums1[i] = nums2[j];
+            j++;
+        }
+    }
+    if (j != n) {
+        for (let i = j; i < n; i++) {
+            nums1[m + i] = nums2[i];
+        }
+    }
+    if (i != n + m) {
+        for (; i < n + m; i++) {
+            if (val < nums1[i]) {
+                let t = nums1[i];
+                nums1 = val;
+                val = t;
+            }
+        }
+    }
+
 };
-let h = new ListNode(1);
-
-let h1 = new ListNode(1);
-let h2 = new ListNode(1);
-let h3 = new ListNode(1);
-let h4 = new ListNode(1);
-h.next = h1;
-h1.next = h2;
-h2.next = h3;
-h3.next = h4;
-let res = deleteDuplicates(h);
-console.log("```");
-for (; res != null; res = res.next) {
-    console.log("```");
-
-    console.log(res.val);
-}
+console.log(nums1);
+merge(nums1, 1, nums2, 1);
+console.log(nums1);
